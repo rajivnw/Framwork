@@ -33,7 +33,7 @@ public class TestBaseClass implements ITestListener {
 
 	File file = new File("src/test/resources/prop");
 	Properties properties = new Properties();
-	private static WebDriver driver;
+	private static AndroidDriver driver;
 	private static Map<String, String> driverCap = null;
 
 	public TestBaseClass() {
@@ -143,7 +143,7 @@ public class TestBaseClass implements ITestListener {
 		if (ITestResult.FAILURE == result.getStatus()) {
 			try {
 
-				TakesScreenshot ts = (TakesScreenshot) driver;
+				TakesScreenshot ts = driver;
 
 				File source = ts.getScreenshotAs(OutputType.FILE);
 
