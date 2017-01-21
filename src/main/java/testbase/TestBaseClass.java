@@ -21,19 +21,18 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 
-import io.appium.java_client.android.AndroidDriver;
-
 public class TestBaseClass implements ITestListener {
 
 	File file = new File("src/test/resources/prop");
 	Properties properties = new Properties();
-	private static AndroidDriver driver;
+	private static WebDriver driver;
 	private static Map<String, String> driverCap = null;
 
 	public TestBaseClass() {
@@ -95,7 +94,7 @@ public class TestBaseClass implements ITestListener {
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
 
 		try {
-			driver = new AndroidDriver(
+			driver = new RemoteWebDriver(
 					new URL("https://" + host + "/nexperience/perfectomobile/wd/hub"),
 					capabilities);
 		} catch (MalformedURLException e) {
@@ -143,7 +142,7 @@ public class TestBaseClass implements ITestListener {
 		if (ITestResult.FAILURE == result.getStatus()) {
 			try {
 
-				TakesScreenshot ts = driver;
+				TakesScreenshot ts = (TakesScreenshot) driver;
 
 				File source = ts.getScreenshotAs(OutputType.FILE);
 
