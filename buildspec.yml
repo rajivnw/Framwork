@@ -24,6 +24,7 @@ phases:
       - command
 artifacts:
   files:
-    - location
-    - location
+    - appspec.yml
+    - target/SampleMavenTomcatApp.war
+    - scripts/*
   discard-paths: yes
