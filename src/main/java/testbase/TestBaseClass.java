@@ -1,148 +1,83 @@
 package testbase;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.IExecutionListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 
-public class TestBaseClass implements ITestListener {
+public class TestBaseClass implements ITestListener, IExecutionListener {
 
 	File file = new File("src/test/resources/prop");
-	Properties properties = new Properties();
-	private static WebDriver driver;
-	private static Map<String, String> driverCap = null;
+	private Map<String, String> driverCap = null;
 
 	public TestBaseClass() {
-
+		System.out.println("in TestBase Class constructor");
 	}
 
 	public void onStart(ITestContext context) {
 
+		System.out.println("in on start");
+		DriverFactory driverFactory = new DriverFactory();
 		this.loadProperties(file);
+
 		driverCap = context.getCurrentXmlTest().getAllParameters();
-		System.out.println(driverCap);
+		Map<String, String> testParma = context.getCurrentXmlTest().getTestParameters();
+		Map<String, String> localParm = context.getCurrentXmlTest().getLocalParameters();
+		String globalParm = context.getCurrentXmlTest().getParameter("feature");
 
-		if (driverCap.containsKey("browserName") && driver == null) {
-			setDriver(context.getCurrentXmlTest().getParameter("browserName"));
-		}
-
-		if (driverCap.containsKey("cloudName") && driver == null) {
-			setCap();
-		}
-		driver.manage().deleteAllCookies();
-		this.openWebsite();
-	}
-
-	public static WebDriver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(String browserName) {
-		System.out.println("Browser Name......." + browserName);
-
-		if (browserName.toLowerCase().contains("chrome")) {
-			Map<String, String> mobileEmulation = new HashMap<String, String>();
-			mobileEmulation.put("deviceName", "Google Nexus 5");
-
-			Map<String, Object> chromeOptions = new HashMap<String, Object>();
-			chromeOptions.put("mobileEmulation", mobileEmulation);
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-			System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-			driver = new ChromeDriver(capabilities);
-
-		}
-	}
-
-	public void setCap() {
-
-		String host = "partners.perfectomobile.com";
-
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-
-		capabilities.setCapability("user", "is_user1@infostretch.com");
-		capabilities.setCapability("password", "demo123");
-		capabilities.setCapability("platformName", "android");
-		capabilities.setCapability("platformVersion", "6.0.1");
-
-		// capabilities.setCapability("deviceName", "3219D3B1");
-		capabilities.setCapability("automationName", "appium");
-
-		capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+		System.out.println("driverCap" + driverCap);
+		System.out.println("testParma" + testParma);
+		System.out.println("localParm" + localParm);
+		System.out.println("globalParm" + globalParm);
 
 		try {
-			driver = new RemoteWebDriver(
-					new URL("https://" + host + "/nexperience/perfectomobile/wd/hub"),
-					capabilities);
+			driverFactory
+					.setBrowser(context.getCurrentXmlTest().getParameter("browserName"));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
+	}
 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		System.out.println("this is done");
-
+	public WebDriver getDriver() {
+		DriverFactory driverFactory = new DriverFactory();
+		return driverFactory.getDriver();
 	}
 
 	public void openWebsite() {
-		getDriver().get(getKey("baseURL"));
+		System.out.println("baseURL" + this.getKey("baseURL"));
+
+		getDriver().get(this.getKey("baseURL"));
 		getDriver().manage().window().maximize();
 		WSJUtils.waitForPageLoad();
 	}
 
 	public void loadProperties(final File folder) {
-		for (final File fileEntry : folder.listFiles()) {
-			if (fileEntry.isDirectory()) {
-				loadProperties(fileEntry);
-			} else {
-				System.out.println(fileEntry.getName());
-				try {
-					File file = new File(
-							"src/test/resources/prop/" + fileEntry.getName() + "");
-					FileInputStream fileInput = new FileInputStream(file);
-
-					properties.load(fileInput);
-					fileInput.close();
-
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		LoadTestData testData = new LoadTestData();
+		testData.loadProperties(folder);
+	}
+	public String getKey(String key) {
+		LoadTestData testData = new LoadTestData();
+		return testData.getKey(key);
 	}
 
 	@AfterMethod
 	public void tearDown(ITestResult result) {
-
+		DriverFactory driverFac = new DriverFactory();
 		if (ITestResult.FAILURE == result.getStatus()) {
 			try {
 
-				TakesScreenshot ts = (TakesScreenshot) driver;
+				TakesScreenshot ts = (TakesScreenshot) driverFac.getDriver();
 
 				File source = ts.getScreenshotAs(OutputType.FILE);
 
@@ -163,20 +98,6 @@ public class TestBaseClass implements ITestListener {
 
 		}
 
-	}
-
-	public String getKey(String key) {
-
-		Enumeration enuKeys = properties.keys();
-		while (enuKeys.hasMoreElements()) {
-			String keyValue = (String) enuKeys.nextElement();
-			if (keyValue.equalsIgnoreCase(key)) {
-				return properties.getProperty(keyValue);
-			}
-			// String value = properties.getProperty(key);
-			// System.out.println(key + ": " + value);
-		}
-		return null;
 	}
 
 	public void onTestStart(ITestResult result) {
@@ -205,13 +126,21 @@ public class TestBaseClass implements ITestListener {
 	}
 
 	public void onFinish(ITestContext context) {
+		System.out.println("onFinish method");
+		System.out.println("Driver going to close");
+		getDriver().close();
 
 	}
 
-	@AfterSuite
-	public void closeDriver() {
-		System.out.println("Driver going to close");
-		driver.quit();
+	public void onExecutionStart() {
+		System.out.println("onExecutionStart method");
+
+	}
+
+	public void onExecutionFinish() {
+		System.out.println("Generating the Masterthought Report");
+		GenerateReport.GenerateMasterthoughtReport();
+		System.out.println("TestNG has finished, the execution");
 	}
 
 }
