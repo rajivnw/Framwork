@@ -8,15 +8,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WSJUtils extends TestBaseClass {
 
-	static WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+	WebDriverWait wait = null;
+
+	public WSJUtils() {
+		System.out.println("WSJUtils const.");
+		wait = new WebDriverWait(getDriver(), 30);
+	}
 
 	public static void waitForPageLoad() {
+		WSJUtils wsj = new WSJUtils();
+		wsj.PageLoadWait();
+		// wsj.jQueryLoadWait();
+	}
+
+	public void PageLoadWait() {
 		ExpectedCondition<Boolean> pageLoad = new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
 				return ((JavascriptExecutor) driver)
 						.executeScript("return document.readyState").equals("complete");
 			}
 		};
+		wait.until(pageLoad);
+	}
+
+	public void jQueryLoadWait() {
 
 		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
 
@@ -30,8 +45,7 @@ public class WSJUtils extends TestBaseClass {
 				}
 			}
 		};
-		wait.until(pageLoad);
-		// wait.until(jQueryLoad);
+		wait.until(jQueryLoad);
 	}
 
 	public void waitForAngularLoad(long timeOutInSeconds) {
@@ -49,7 +63,8 @@ public class WSJUtils extends TestBaseClass {
 	}
 
 	public static void clickUsingJavaScript(WebElement element) {
-		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+		JavascriptExecutor executor =
+				(JavascriptExecutor) new TestBaseClass().getDriver();
 		executor.executeScript("arguments[0].click();", element);
 	}
 

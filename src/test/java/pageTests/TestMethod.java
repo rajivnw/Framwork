@@ -1,8 +1,5 @@
 package pageTests;
 
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import pageObjcs.RetrieveTestData;
 import pageObjcs.SearchCompany;
 
@@ -14,8 +11,6 @@ public class TestMethod {
 	 *            This method for search a company
 	 */
 
-	@Test
-	@Parameters({"companyName"})
 	public void SearchCompany(String cmpName) {
 		SearchCompany searchcmp = new SearchCompany();
 		searchcmp.clickToSearchBtn();
@@ -28,8 +23,7 @@ public class TestMethod {
 	 * @param cmpName
 	 *            This method is for retrieve data
 	 */
-	@Test
-	@Parameters({"companyName"})
+
 	public void RetrieveCompanyData(String cmpName) {
 		RetrieveTestData retrieveData = new RetrieveTestData();
 
@@ -44,8 +38,6 @@ public class TestMethod {
 	 *            This method for compare values
 	 */
 
-	@Test
-	@Parameters({"firstCompareCMP", "secondCompareCMP"})
 	public void compareEPS(String firstCMP, String secondCMP) {
 
 		int cmpr = Float.compare(RetrieveTestData.EPSPriceMap.get(firstCMP),

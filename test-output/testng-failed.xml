@@ -2,31 +2,58 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <parameter name="browserName" value="chrome"/>
-  <parameter name="firstCompareCMP" value="AXS"/>
-  <parameter name="secondCompareCMP" value="AIG"/>
-  <parameter name="companyName" value="AIG"/>
   <listeners>
     <listener class-name="testbase.TestBaseClass"/>
   </listeners>
-  <test name="AXS_NYSE_Company(failed)">
-    <parameter name="companyName" value="AXS"/>
+  <test name="compareEPS(failed)">
+    <parameter name="glue" value="desktop"/>
+    <parameter name="feature" value="src/test/resources/feature/compareEPS.feature"/>
     <classes>
-      <class name="pageTests.TestMethod">
+      <class name="runner.RunCukesTest">
         <methods>
-          <include name="RetrieveCompanyData" invocation-numbers="0"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="feature"/>
         </methods>
-      </class> <!-- pageTests.TestMethod -->
+      </class> <!-- runner.RunCukesTest -->
     </classes>
-  </test> <!-- AXS_NYSE_Company(failed) -->
-  <test name="CompareEPS_AXS_vs_AIG(failed)">
-    <parameter name="firstCompareCMP" value="AXS"/>
-    <parameter name="secondCompareCMP" value="AIG"/>
+  </test> <!-- compareEPS(failed) -->
+  <test name="searchcmp(failed)">
+    <parameter name="glue" value="desktop"/>
+    <parameter name="feature" value="src/test/resources/feature/searchcmp.feature"/>
     <classes>
-      <class name="pageTests.TestMethod">
+      <class name="runner.RunCukesTest">
         <methods>
-          <include name="compareEPS" invocation-numbers="0"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="feature"/>
         </methods>
-      </class> <!-- pageTests.TestMethod -->
+      </class> <!-- runner.RunCukesTest -->
     </classes>
-  </test> <!-- CompareEPS_AXS_vs_AIG(failed) -->
+  </test> <!-- searchcmp(failed) -->
+  <test name="retrieveData(failed)">
+    <parameter name="glue" value="desktop"/>
+    <parameter name="feature" value="src/test/resources/feature/retrieveData.feature"/>
+    <classes>
+      <class name="runner.RunCukesTest">
+        <methods>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="tearDownClass"/>
+          <include name="feature"/>
+        </methods>
+      </class> <!-- runner.RunCukesTest -->
+    </classes>
+  </test> <!-- retrieveData(failed) -->
 </suite> <!-- Failed suite [Suite] -->
