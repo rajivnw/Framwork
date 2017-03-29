@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="5" name="Failed suite [Suite (1)]">
+  <parameter name="browserName" value="chrome"/>
+  <listeners>
+    <listener class-name="testbase.TestBaseClass"/>
+  </listeners>
+  <test name="AXS_NYSE_Company(failed)">
+    <parameter name="companyName" value="AXS"/>
+    <classes>
+      <class name="pageTests.TestMethod">
+        <methods>
+          <include name="SearchCompany" invocation-numbers="0"/>
+          <include name="RetrieveCompanyData" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- pageTests.TestMethod -->
+    </classes>
+  </test> <!-- AXS_NYSE_Company(failed) -->
+  <test name="AIG_NYSE_Company(failed)">
+    <parameter name="companyName" value="AIG"/>
+    <classes>
+      <class name="pageTests.TestMethod">
+        <methods>
+          <include name="SearchCompany" invocation-numbers="0"/>
+          <include name="RetrieveCompanyData" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- pageTests.TestMethod -->
+    </classes>
+  </test> <!-- AIG_NYSE_Company(failed) -->
+  <test name="CompareEPS_AXS_vs_AIG(failed)">
+    <parameter name="firstCompareCMP" value="AXS"/>
+    <parameter name="secondCompareCMP" value="AIG"/>
+    <classes>
+      <class name="pageTests.TestMethod">
+        <methods>
+          <include name="compareEPS" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- pageTests.TestMethod -->
+    </classes>
+  </test> <!-- CompareEPS_AXS_vs_AIG(failed) -->
+</suite> <!-- Failed suite [Suite (1)] -->

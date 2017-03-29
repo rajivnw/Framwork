@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WSJUtils extends TestBaseClass {
 
-	WebDriverWait wait = null;
+	static WebDriverWait wait = null;
 
 	public WSJUtils() {
 		System.out.println("WSJUtils const.");

@@ -1,5 +1,6 @@
 package pageTests;
 
+import pageObjcs.Locators;
 import pageObjcs.RetrieveTestData;
 import pageObjcs.SearchCompany;
 
@@ -12,10 +13,17 @@ public class TestMethod {
 	 */
 
 	public void SearchCompany(String cmpName) {
-		SearchCompany searchcmp = new SearchCompany();
-		searchcmp.clickToSearchBtn();
-		searchcmp.enterCompany(cmpName);
-		searchcmp.clickToSearchedCompany(cmpName);
+
+		// SearchCompany searchcmp = new SearchCompany();
+		// searchcmp.clickToSearchBtn();
+		// searchcmp.enterCompany(cmpName);
+		// searchcmp.clickToSearchedCompany(cmpName);
+		System.out.println(
+				"Thread name in Test Method " + Thread.currentThread().getName());
+		Locators.Page(SearchCompany.class).clickToSearchBtn();
+		Locators.Page(SearchCompany.class).enterCompany(cmpName);
+		Locators.Page(SearchCompany.class).clickToSearchedCompany(cmpName);
+
 	}
 
 	/**
@@ -25,11 +33,15 @@ public class TestMethod {
 	 */
 
 	public void RetrieveCompanyData(String cmpName) {
-		RetrieveTestData retrieveData = new RetrieveTestData();
+		// RetrieveTestData retrieveData = new RetrieveTestData();
+		// retrieveData.currentPrice(cmpName);
+		// retrieveData.lowHighPrices_52Weeks(cmpName);
+		// retrieveData.EPSPrice(cmpName);
 
-		retrieveData.currentPrice(cmpName);
-		retrieveData.lowHighPrices_52Weeks(cmpName);
-		retrieveData.EPSPrice(cmpName);
+		Locators.Page(RetrieveTestData.class).currentPrice(cmpName);
+		Locators.Page(RetrieveTestData.class).lowHighPrices_52Weeks(cmpName);
+		Locators.Page(RetrieveTestData.class).EPSPrice(cmpName);
+
 	}
 	/**
 	 * @author rajiv.sharma

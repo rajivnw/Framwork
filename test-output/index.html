@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Suite">
-              <span class="suite-name border-passed">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -54,7 +54,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-Suite">
-                    <span class="test-stats">1 test</span>
+                    <span class="test-stats">3 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,31 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods, 3 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods passed suite-Suite"> (hide)</a> <!-- hide-methods passed suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods passed suite-Suite"> (show)</a> <!-- show-methods passed suite-Suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
                     </span>
-                    <div class="method-list-content passed suite-Suite">
+                    <div class="method-list-content failed suite-Suite">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(compare EPS prices)">feature(compare EPS prices)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(search AIG company)">feature(search AIG company)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Suite -->
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(search AXS company)">feature(search AXS company)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,24 +127,86 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">runner.RunCukesTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="feature(compare EPS prices)">
+                  </a> <!-- feature(compare EPS prices) -->
+                  <span class="method-name">feature</span>
+                  <span class="parameters">(compare EPS prices)</span>
+                  <div class="stack-trace">cucumber.runtime.CucumberException: java.lang.NullPointerException
+	at api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:101)
+	at api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:23)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.NullPointerException
+	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
+	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
+	at ✽.Given user starts WSJ session(src/test/resources/feature/compareEPS.feature:3)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Feature)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="feature(search AIG company)">
                   </a> <!-- feature(search AIG company) -->
                   <span class="method-name">feature</span>
                   <span class="parameters">(search AIG company)</span>
+                  <div class="stack-trace">cucumber.runtime.CucumberException: java.lang.NullPointerException
+	at api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:101)
+	at api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:23)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.NullPointerException
+	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
+	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
+	at ✽.Given user starts WSJ session(src/test/resources/feature/searchcmp.feature:3)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Feature)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="feature(search AXS company)">
+                  </a> <!-- feature(search AXS company) -->
+                  <span class="method-name">feature</span>
+                  <span class="parameters">(search AXS company)</span>
+                  <div class="stack-trace">cucumber.runtime.CucumberException: java.lang.NullPointerException
+	at api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:101)
+	at api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:23)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.NullPointerException
+	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
+	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
+	at ✽.Given user starts WSJ session(src/test/resources/feature/retrieveData.feature:3)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Feature)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
+          </div> <!-- suite-Suite-class-failed -->
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -144,11 +216,19 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot;&gt;
+&lt;suite thread-count=&quot;3&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
   &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;testbase.TestBaseClass&quot;/&gt;
   &lt;/listeners&gt;
+  &lt;test name=&quot;retrieveData&quot;&gt;
+    &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
+    &lt;parameter name=&quot;glue&quot; value=&quot;desktop&quot;/&gt;
+    &lt;parameter name=&quot;feature&quot; value=&quot;src/test/resources/feature/retrieveData.feature&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;runner.RunCukesTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- retrieveData --&gt;
   &lt;test name=&quot;searchcmp&quot;&gt;
     &lt;parameter name=&quot;glue&quot; value=&quot;desktop&quot;/&gt;
     &lt;parameter name=&quot;feature&quot; value=&quot;src/test/resources/feature/searchcmp.feature&quot;/&gt;
@@ -156,6 +236,13 @@
       &lt;class name=&quot;runner.RunCukesTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- searchcmp --&gt;
+  &lt;test name=&quot;compareEPS&quot;&gt;
+    &lt;parameter name=&quot;glue&quot; value=&quot;desktop&quot;/&gt;
+    &lt;parameter name=&quot;feature&quot; value=&quot;src/test/resources/feature/compareEPS.feature&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;runner.RunCukesTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- compareEPS --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -167,7 +254,13 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
+                <span class="test-name">retrieveData (1 class)</span>
+              </li>
+              <li>
                 <span class="test-name">searchcmp (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">compareEPS (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -201,16 +294,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'feature')
 data.setCell(0, 2, 'runner.RunCukesTest')
-data.setCell(0, 3, 68604);
+data.setCell(0, 3, 221);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'feature')
+data.setCell(1, 2, 'runner.RunCukesTest')
+data.setCell(1, 3, 216);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'feature')
+data.setCell(2, 2, 'runner.RunCukesTest')
+data.setCell(2, 3, 199);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 636 ms</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -238,16 +339,46 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">runner.RunCukesTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@5090a603)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@f3d2424)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUpClass(org.testng.TestRunner@770fbf4c)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUpClass(org.testng.TestRunner@2ad853a5)</span>
+                <span class="method-start">1 ms</span>
+              </div> <!-- configuration-class before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">feature(compare EPS prices)</span>
+                <span class="method-start">590 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">feature(search AXS company)</span>
+                <span class="method-start">598 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">feature(search AIG company)</span>
-                <span class="method-start">427 ms</span>
+                <span class="method-start">602 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">69038 ms</span>
+                <span class="method-start">819 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">825 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">825 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

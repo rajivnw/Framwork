@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="3" parallel="tests">
+	<listeners>
+		<listener class-name="testbase.TestBaseClass" />
+	</listeners>
+	<parameter name="browserName" value="chrome"></parameter>
+
+	<test name="retrieveData">
+		<parameter name="browserName" value="chrome"></parameter>
+	
+		<parameter name="feature"
+			value="src/test/resources/feature/retrieveData.feature"></parameter>
+		<parameter name="glue" value="desktop"></parameter>
+		<classes>
+			<class name="runner.RunCukesTest" />
+		</classes>
+	</test>
+
+	<test name="searchcmp">
+		<parameter name="feature"
+			value="src/test/resources/feature/searchcmp.feature"></parameter>
+		<parameter name="glue" value="desktop"></parameter>
+		<classes>
+			<class name="runner.RunCukesTest" />
+		</classes>
+	</test>
+
+
+	<test name="compareEPS">
+		<parameter name="feature"
+			value="src/test/resources/feature/compareEPS.feature"></parameter>
+		<parameter name="glue" value="desktop"></parameter>
+		<classes>
+			<class name="runner.RunCukesTest" />
+		</classes>
+	</test>
+
+</suite> 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
   <parameter name="browserName" value="chrome"/>
   <listeners>
     <listener class-name="testbase.TestBaseClass"/>
   </listeners>
-  <test name="compareEPS(failed)">
+  <test name="compareEPS(failed)" parallel="tests">
     <parameter name="glue" value="desktop"/>
     <parameter name="feature" value="src/test/resources/feature/compareEPS.feature"/>
     <classes>
@@ -17,12 +17,12 @@
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
-          <include name="feature"/>
+          <include name="feature" invocation-numbers="0"/>
         </methods>
       </class> <!-- runner.RunCukesTest -->
     </classes>
   </test> <!-- compareEPS(failed) -->
-  <test name="searchcmp(failed)">
+  <test name="searchcmp(failed)" parallel="tests">
     <parameter name="glue" value="desktop"/>
     <parameter name="feature" value="src/test/resources/feature/searchcmp.feature"/>
     <classes>
@@ -34,12 +34,13 @@
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
-          <include name="feature"/>
+          <include name="feature" invocation-numbers="0"/>
         </methods>
       </class> <!-- runner.RunCukesTest -->
     </classes>
   </test> <!-- searchcmp(failed) -->
-  <test name="retrieveData(failed)">
+  <test name="retrieveData(failed)" parallel="tests">
+    <parameter name="browserName" value="chrome"/>
     <parameter name="glue" value="desktop"/>
     <parameter name="feature" value="src/test/resources/feature/retrieveData.feature"/>
     <classes>
@@ -51,7 +52,7 @@
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
           <include name="tearDownClass"/>
-          <include name="feature"/>
+          <include name="feature" invocation-numbers="0"/>
         </methods>
       </class> <!-- runner.RunCukesTest -->
     </classes>

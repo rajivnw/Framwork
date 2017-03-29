@@ -1,0 +1,63 @@
+[
+  {
+    "id": "search-axs-company",
+    "description": "",
+    "name": "search AXS company",
+    "keyword": "Feature",
+    "line": 1,
+    "elements": [
+      {
+        "id": "search-axs-company;search-axs-company",
+        "description": "",
+        "name": "search AXS company",
+        "keyword": "Scenario",
+        "line": 2,
+        "steps": [
+          {
+            "result": {
+              "duration": 160915447,
+              "status": "failed",
+              "error_message": "java.lang.NullPointerException\r\n\tat testbase.TestBaseClass.getDriver(TestBaseClass.java:64)\r\n\tat testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)\r\n\tat desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)\r\n\tat ✽.Given user starts WSJ session(src/test/resources/feature/retrieveData.feature:3)\r\n"
+            },
+            "name": "user starts WSJ session",
+            "keyword": "Given ",
+            "line": 3,
+            "match": {
+              "location": "HomePageStepDef.Starts_WSJ_session()"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "name": "user should see WSJ home page with all information",
+            "keyword": "Then ",
+            "line": 4,
+            "match": {
+              "location": "HomePageStepDef.ValidateWsjHomePage()"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "name": "user search \u0027AXS\u0027 company",
+            "keyword": "And ",
+            "line": 5,
+            "match": {
+              "arguments": [
+                {
+                  "val": "AXS",
+                  "offset": 13
+                }
+              ],
+              "location": "HomePageStepDef.SearchCompanyOnWsj(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "src/test/resources/feature/retrieveData.feature"
+  }
+]
