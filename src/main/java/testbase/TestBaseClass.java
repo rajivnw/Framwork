@@ -26,21 +26,20 @@ import org.testng.annotations.AfterMethod;
 public class TestBaseClass implements ITestListener, IExecutionListener {
 
 	File file = new File("src/test/resources/prop");
-	private Map<String, String> driverCap = null;
-	public RemoteWebDriver dr;
-
+	protected Map<String, String> driverCap = null;
+	protected RemoteWebDriver driver = null;
+	protected SessionId SessionId = null;
 	public TestBaseClass() {
 		System.out.println("in TestBase Class constructor");
 	}
 
-	public void onStart(ITestContext context) {
+	public void onStart1() {
 
 	}
 
-	public void onStart1() {
+	public void onStart(ITestContext context) {
 
 		System.out.println("in on start");
-		DriverFactory driverFactory = new DriverFactory();
 		this.loadProperties(file);
 
 		// driverCap = context.getCurrentXmlTest().getAllParameters();
@@ -59,7 +58,7 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 		try {
 			// driverFactory
 			// .setBrowser(context.getCurrentXmlTest().getParameter("browserName"));
-			driverFactory.setBrowser("chrome");
+			setBrowser("chrome");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,27 +67,21 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 	}
 
 	public WebDriver getDriver() {
-		DriverFactory driverFactory = new DriverFactory();
-		SessionId session = ((RemoteWebDriver) driverFactory.getDriver()).getSessionId();
-		System.out.println("session id " + session);
+		// DriverFactory driverFactory = new DriverFactory();
+		// SessionId session = ((RemoteWebDriver)
+		// driverFactory.getDriver()).getSessionId();
+		// System.out.println("session id " + session);
 		// return driverFactory.getDriver();
-		return dr.get();
+		// return dr.get();
+		return driver;
 
-	}
-
-	public void openWebsite() {
-		System.out.println("baseURL" + this.getKey("baseURL"));
-
-		getDriver().get(this.getKey("baseURL"));
-		getDriver().manage().window().maximize();
-		WSJUtils.waitForPageLoad();
 	}
 
 	public void loadProperties(final File folder) {
 		LoadTestData testData = new LoadTestData();
 		testData.loadProperties(folder);
 	}
-	public String getKey(String key) {
+	public static String getKey(String key) {
 		LoadTestData testData = new LoadTestData();
 		return testData.getKey(key);
 	}
@@ -131,7 +124,7 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 		}
 	}
 
-	public static SessionId sessionID() {
+	public SessionId sessionID() {
 		System.out.println("driver getSessionID" + getDriver());
 		return ((RemoteWebDriver) getDriver()).getSessionId();
 	}
@@ -192,8 +185,6 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 
 	public void setBrowser(String myBrowser) throws MalformedURLException {
 
-		RemoteWebDriver driver = null;
-
 		if (myBrowser.equals("chrome")) {
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("deviceName", "Google Nexus 5");
@@ -207,6 +198,7 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 			// URL("http://localhost:4444/wd/hub"),
 			// capabilities);
 			driver = new ChromeDriver();
+			SessionId = ((RemoteWebDriver) getDriver()).getSessionId();
 
 		} else if (myBrowser.equals("firefox")) {
 			DesiredCapabilities capability = new DesiredCapabilities().firefox();
@@ -217,19 +209,8 @@ public class TestBaseClass implements ITestListener, IExecutionListener {
 		}
 
 		// setting webdriver
-		setWebDriver(driver);
-
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-	}
-
-	// public WebDriver getDriver() {
-	// return dr.get();
-	// }
-
-	public void setWebDriver(RemoteWebDriver driver) {
-		dr.set(driver);
 
 	}
 

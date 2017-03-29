@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(compare EPS prices)">feature(compare EPS prices)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(search AXS company)">feature(search AXS company)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -112,7 +112,7 @@
                       <br/>
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(search AXS company)">feature(search AXS company)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="runner.RunCukesTest" hash-for-method="feature(compare EPS prices)">feature(compare EPS prices)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -135,10 +135,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="feature(compare EPS prices)">
-                  </a> <!-- feature(compare EPS prices) -->
+                  <a name="feature(search AXS company)">
+                  </a> <!-- feature(search AXS company) -->
                   <span class="method-name">feature</span>
-                  <span class="parameters">(compare EPS prices)</span>
+                  <span class="parameters">(search AXS company)</span>
                   <div class="stack-trace">cucumber.runtime.CucumberException: java.lang.NullPointerException
 	at api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:101)
 	at api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:23)
@@ -147,10 +147,10 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 Caused by: java.lang.NullPointerException
-	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
-	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
-	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
-	at ✽.Given user starts WSJ session(src/test/resources/feature/compareEPS.feature:3)
+	at pageTests.TestBaseProvider.getDriver(TestBaseProvider.java:14)
+	at pageTests.TestMethod.openWebsite(TestMethod.java:71)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:12)
+	at ✽.Given user starts WSJ session(src/test/resources/feature/retrieveData.feature:3)
 ... Removed 16 stack frames
 </div> <!-- stack-trace -->
                   <em>
@@ -171,9 +171,9 @@ Caused by: java.lang.NullPointerException
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 Caused by: java.lang.NullPointerException
-	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
-	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
-	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
+	at pageTests.TestBaseProvider.getDriver(TestBaseProvider.java:14)
+	at pageTests.TestMethod.openWebsite(TestMethod.java:71)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:12)
 	at ✽.Given user starts WSJ session(src/test/resources/feature/searchcmp.feature:3)
 ... Removed 16 stack frames
 </div> <!-- stack-trace -->
@@ -183,10 +183,10 @@ Caused by: java.lang.NullPointerException
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="feature(search AXS company)">
-                  </a> <!-- feature(search AXS company) -->
+                  <a name="feature(compare EPS prices)">
+                  </a> <!-- feature(compare EPS prices) -->
                   <span class="method-name">feature</span>
-                  <span class="parameters">(search AXS company)</span>
+                  <span class="parameters">(compare EPS prices)</span>
                   <div class="stack-trace">cucumber.runtime.CucumberException: java.lang.NullPointerException
 	at api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:101)
 	at api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:23)
@@ -195,10 +195,10 @@ Caused by: java.lang.NullPointerException
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 Caused by: java.lang.NullPointerException
-	at testbase.TestBaseClass.getDriver(TestBaseClass.java:64)
-	at testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)
-	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)
-	at ✽.Given user starts WSJ session(src/test/resources/feature/retrieveData.feature:3)
+	at pageTests.TestBaseProvider.getDriver(TestBaseProvider.java:14)
+	at pageTests.TestMethod.openWebsite(TestMethod.java:71)
+	at desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:12)
+	at ✽.Given user starts WSJ session(src/test/resources/feature/compareEPS.feature:3)
 ... Removed 16 stack frames
 </div> <!-- stack-trace -->
                   <em>
@@ -216,7 +216,7 @@ Caused by: java.lang.NullPointerException
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;3&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
+&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
   &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;testbase.TestBaseClass&quot;/&gt;
@@ -298,20 +298,20 @@ data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'feature')
 data.setCell(0, 2, 'runner.RunCukesTest')
-data.setCell(0, 3, 221);
+data.setCell(0, 3, 138);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'feature')
 data.setCell(1, 2, 'runner.RunCukesTest')
-data.setCell(1, 3, 216);
+data.setCell(1, 3, 20);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'feature')
 data.setCell(2, 2, 'runner.RunCukesTest')
-data.setCell(2, 3, 199);
+data.setCell(2, 3, 10);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 636 ms</span>
+              <span class="suite-total-time">Total running time: 168 ms</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -339,46 +339,46 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">runner.RunCukesTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@f3d2424)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@5e402aaa)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">feature(search AXS company)</span>
+                <span class="method-start">419 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">561 ms</span>
+              </div> <!-- configuration-class after -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@770fbf4c)</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@46b12f3d)</span>
+                <span class="method-start">4531 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">feature(search AIG company)</span>
+                <span class="method-start">4588 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">4612 ms</span>
+              </div> <!-- configuration-class after -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@2ad853a5)</span>
-                <span class="method-start">1 ms</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@1a94720d)</span>
+                <span class="method-start">8596 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">feature(compare EPS prices)</span>
-                <span class="method-start">590 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">feature(search AXS company)</span>
-                <span class="method-start">598 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">feature(search AIG company)</span>
-                <span class="method-start">602 ms</span>
+                <span class="method-start">8640 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">819 ms</span>
-              </div> <!-- configuration-class after -->
-              <div class="configuration-class after">
-                <span class="method-name">tearDownClass</span>
-                <span class="method-start">825 ms</span>
-              </div> <!-- configuration-class after -->
-              <div class="configuration-class after">
-                <span class="method-name">tearDownClass</span>
-                <span class="method-start">825 ms</span>
+                <span class="method-start">8654 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -19,7 +19,7 @@ public class RunThread implements Runnable {
 		System.out.println("Thread name " + Thread.currentThread().getName());
 		TestBaseClass testBase = new TestBaseClass();
 		testBase.onStart1();
-		testBase.openWebsite();
+		// testBase.openWebsite();
 
 		TestMethod testMethod = new TestMethod();
 		testMethod.SearchCompany("AXS");

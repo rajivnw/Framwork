@@ -3,6 +3,8 @@ package pageTests;
 import pageObjcs.Locators;
 import pageObjcs.RetrieveTestData;
 import pageObjcs.SearchCompany;
+import testbase.TestBaseClass;
+import testbase.WSJUtils;
 
 public class TestMethod {
 
@@ -61,6 +63,17 @@ public class TestMethod {
 		} else {
 			System.out.println(firstCMP + " EPS is equal to " + secondCMP);
 		}
+	}
+
+	public void openWebsite() {
+		System.out.println("baseURL" + TestBaseClass.getKey("baseURL"));
+		// TestBaseProvider testBase = new TestBaseProvider();
+		System.out.println(TestBaseProvider.TestString());
+
+		System.out.println(TestBaseProvider.getDriver().toString());
+		TestBaseProvider.getDriver().get(TestBaseClass.getKey("baseURL"));
+		TestBaseProvider.getDriver().manage().window().maximize();
+		WSJUtils.waitForPageLoad();
 	}
 
 }

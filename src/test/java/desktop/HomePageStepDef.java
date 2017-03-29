@@ -3,14 +3,13 @@ package desktop;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import pageTests.TestMethod;
-import testbase.TestBaseClass;
 
 public class HomePageStepDef {
 
 	@Given("user starts WSJ session")
 	public void Starts_WSJ_session() {
-		TestBaseClass testBase = new TestBaseClass();
-		testBase.openWebsite();
+		TestMethod testMethod = new TestMethod();
+		testMethod.openWebsite();
 	}
 
 	@Then("user should see WSJ home page with all information")

@@ -33,9 +33,9 @@ formatter.match({
   "location": "HomePageStepDef.Starts_WSJ_session()"
 });
 formatter.result({
-  "duration": 160917421,
+  "duration": 5727897169,
   "status": "failed",
-  "error_message": "java.lang.NullPointerException\r\n\tat testbase.TestBaseClass.getDriver(TestBaseClass.java:64)\r\n\tat testbase.TestBaseClass.openWebsite(TestBaseClass.java:73)\r\n\tat desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:13)\r\n\tat ✽.Given user starts WSJ session(src/test/resources/feature/searchcmp.feature:3)\r\n"
+  "error_message": "java.lang.NullPointerException\r\n\tat pageTests.TestBaseProvider.getDriver(TestBaseProvider.java:14)\r\n\tat pageTests.TestMethod.openWebsite(TestMethod.java:71)\r\n\tat desktop.HomePageStepDef.Starts_WSJ_session(HomePageStepDef.java:12)\r\n\tat ✽.Given user starts WSJ session(src/test/resources/feature/searchcmp.feature:3)\r\n"
 });
 formatter.match({
   "location": "HomePageStepDef.ValidateWsjHomePage()"
